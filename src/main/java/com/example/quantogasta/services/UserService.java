@@ -1,14 +1,17 @@
 package com.example.quantogasta.services;
 
-import com.example.quantogasta.user.User;
-import com.example.quantogasta.user.UserRepository;
-import com.example.quantogasta.user.UserRequestDTO;
-import com.example.quantogasta.user.UserResponseDTO;
+import com.example.quantogasta.domain.user.UserEntity;
+import com.example.quantogasta.infra.usersExceptions.EmailAlreadyExistException;
+import com.example.quantogasta.infra.usersExceptions.UserNotFoundException;
+import com.example.quantogasta.repositories.UserRepository;
+import com.example.quantogasta.domain.user.UserRequestDTO;
+import com.example.quantogasta.domain.user.UserResponseDTO;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
+import java.util.NoSuchElementException;
 import java.util.UUID;
 
 @Service
@@ -16,22 +19,46 @@ public class UserService {
     @Autowired
     private UserRepository repository;
 
-    public UserResponseDTO findById(UUID id){
-        return  new UserResponseDTO(repository.findById(id).get());
+    public UserResponseDTO findById(UUID id) {
+        if(repository.findById(id) == null) {
+            UserResponseDTO userResponseDTO = new UserResponseDTO(repository.findById(id).get());
+
+            return userResponseDTO;
+        } else {
+            throw new UserNotFoundException();
+        }
+
     }
 
-    public User createUser(UserRequestDTO data) {
+    public UserEntity createUser(UserRequestDTO data) {
+        if (!repository.existsByEmailIgnoreCase(data.email())) {
 
-       return repository.save(new User(null, data.email(), data.password(), data.username()));
+            return repository.save(new UserEntity(null, data.email(), data.password(), data.username()));
+        } else {
+            throw new EmailAlreadyExistException();
+        }
     }
 
     @Transactional
-    public User updateUser(UserRequestDTO data, UUID id){
-        User user = repository.getReferenceById(id);
-        user.setEmail(data.email());
-        user.setPassword(data.password());
-        user.setUsername(data.username());
-        return user;
+    public UserEntity updateUser(UserRequestDTO data, UUID id) {
+        try {
+            UserEntity userEntity = repository.getReferenceById(id);
+            if (!repository.existsByEmailIgnoreCase(data.email())) {
 
+                userEntity.setEmail(data.email());
+                userEntity.setPassword(data.password());
+                userEntity.setUsername(data.username());
+
+                return userEntity;
+
+            } else {
+                throw new EmailAlreadyExistException();
+            }
+        } catch (EntityNotFoundException e) {
+
+            throw new UserNotFoundException();
+
+        }
     }
+
 }

@@ -1,4 +1,4 @@
-package com.example.quantogasta.user;
+package com.example.quantogasta.domain.user;
 
 
 import jakarta.validation.constraints.NotBlank;

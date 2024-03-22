@@ -1,15 +1,13 @@
-package com.example.quantogasta.user;
+package com.example.quantogasta.domain.user;
 
+
+import com.example.quantogasta.domain.month.YearMonthEntity;
 import jakarta.persistence.*;
-
-import java.io.Serializable;
 import java.time.Instant;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
-@Table(name = "_user")
-public class User implements Serializable {
+public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
@@ -19,10 +17,13 @@ public class User implements Serializable {
     private String username;
     private Instant createTime;
 
-    public User() {
+    @OneToMany(mappedBy = "user")
+    private Set<YearMonthEntity> yearMonthList = new HashSet<>();
+
+    public UserEntity(){
     }
 
-    public User(UUID id, String email, String password, String username) {
+    public UserEntity(UUID id, String email, String password, String username) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -64,12 +65,14 @@ public class User implements Serializable {
         return createTime;
     }
 
-
+    public Set<YearMonthEntity> getYearMonthList() {
+        return yearMonthList;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof User that)) return false;
+        if (!(o instanceof UserEntity that)) return false;
         return Objects.equals(id, that.id);
     }
 
