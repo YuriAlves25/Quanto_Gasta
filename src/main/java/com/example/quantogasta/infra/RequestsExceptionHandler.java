@@ -1,6 +1,7 @@
 package com.example.quantogasta.infra;
 
 import com.example.quantogasta.infra.usersExceptions.EmailAlreadyExistException;
+import com.example.quantogasta.infra.usersExceptions.EmailDontExistException;
 import com.example.quantogasta.infra.usersExceptions.UserNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -12,9 +13,7 @@ public class RequestsExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity UserNotFoundHandler(){
 
-        var response = new ExceptionDTO("User not found!");
-
-        return ResponseEntity.badRequest().body(response);
+        return ResponseEntity.notFound().build();
     }
 
     @ExceptionHandler(EmailAlreadyExistException.class)
@@ -22,7 +21,15 @@ public class RequestsExceptionHandler extends ResponseEntityExceptionHandler {
 
         var response = new ExceptionDTO("Email already exists!");
 
-        return ResponseEntity.status(409).body(response);
+        return ResponseEntity.badRequest().body(response);
+    }
+
+    @ExceptionHandler(EmailDontExistException.class)
+    public ResponseEntity EmailDontExistHandler(){
+
+        var response = new ExceptionDTO("Email not registered!");
+
+        return ResponseEntity.badRequest().body(response);
     }
 
 }
