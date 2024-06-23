@@ -1,14 +1,19 @@
 <main>
   <section class="form-section">
-    <h2>{{ tittle }}</h2>
-
+    <img [src]="image">
+    <h2>{{ title }}</h2>
     <ng-content></ng-content>
 
-    <button class="btn-primary">{{ primaryBtnText }}</button>
+    <button
+      class="btn-primary"
+     (click)="submit()"
+     [disabled]="disablePrimaryBtn"
+     >
+     {{ primaryBtnText }}</button>
 
 
 
-    <button class="btn-secondary">{{ secondaryBtnText }}</button>
+    <button class="btn-secondary" (click)="navigate()">{{ secondaryBtnText }}</button>
 
   </section>
 </main>

@@ -20,6 +20,11 @@ section{
   gap:34px;
 }
 
+img{
+  width: 20%;
+}
+
+
 button{
   width: 80%;
   max-width: 450px;
@@ -32,6 +37,10 @@ button{
   padding: 12px 24px;
   box-shadow: 0px 4px 12px rgb(86, 6, 6);
 
+  &:disabled{
+    opacity: 0.6;
+  }
+
   &.btn-primary{
     background-color: $primary-color;
     color: white;
@@ -41,6 +50,8 @@ button{
     border: 1px solid $primary-color;
     color: $secondary-color;
   }
+
+
 }
 
 
