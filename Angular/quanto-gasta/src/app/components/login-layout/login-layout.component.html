@@ -1,12 +1,14 @@
 <main>
-  <section>
-    <h2>Bem vindo, faça o seu login!</h2>
+  <section class="form-section">
+    <h2>{{ tittle }}</h2>
 
-    <button></button>
-    
-    <br>
+    <ng-content></ng-content>
 
-    <button></button>
+    <button class="btn-primary">{{ primaryBtnText }}</button>
+
+
+
+    <button class="btn-secondary">{{ secondaryBtnText }}</button>
 
   </section>
 </main>
