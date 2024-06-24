@@ -1,0 +1,42 @@
+
+<app-login-layout
+  title="Crie sua conta"
+  primaryBtnText="Criar"
+  secondaryBtnText="Ja possui uma conta ? clique para logar"
+  image="/assets/register.svg"
+  (submit)="submit()"
+  (navigate)="navigate()"
+  [disablePrimaryBtn]="!signupForm.valid"
+  >
+
+
+  <form [formGroup]="signupForm">
+    <app-input-primary
+        formControlName="username"
+        inputName="username"
+        type="text"
+        label="Nome:"
+        placeholder="">
+
+     </app-input-primary>
+
+     <app-input-primary
+        formControlName="email"
+        inputName="email"
+        type="email"
+        label="E-mail:"
+        placeholder="Exemplo@gmail.com">
+
+     </app-input-primary>
+
+      <app-input-primary
+      formControlName="password"
+      inputName="password"
+      type="password"
+      label="Senha:"
+      placeholder=""
+      ></app-input-primary>
+
+
+  </form>
+</app-login-layout>
