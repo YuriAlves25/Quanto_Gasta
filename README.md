@@ -5,7 +5,7 @@
 
 ## Conhecimentos adquiridos <br>
  * Pude fixar conhecimentos de programação Orientada a Objetos, API RESTful, Spring Security, Token JWT
- * Aprendi e apliquei os conceitos da arquitetura de 3 camadas.
+ * Aprendi e apliquei conceitos de arquitetura de 3 camadas.
 
 ## Autor
 * Yuri Alves de Araujo
