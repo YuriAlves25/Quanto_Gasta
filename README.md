@@ -20,3 +20,4 @@ QuantoGasta is a web application developed to help people manage their financial
 
 ## Autor / Author
 * Yuri Alves de Araujo
+* [LinkedIn](https://www.linkedin.com/in/yuri-alves-de-araujo)
