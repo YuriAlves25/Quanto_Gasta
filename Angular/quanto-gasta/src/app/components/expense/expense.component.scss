@@ -1,0 +1,20 @@
+mat-card{
+  width: 20%;
+
+}
+
+.toolbar {
+  display: flex;
+  justify-content: center;
+}
+
+.toolbar-title {
+  text-align: center;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap; /* Permite que os cards quebrem para a linha seguinte, se necessário */
+  gap: 16px; /* Espaçamento entre os cards */
+  justify-content: flex-start; /* Alinha os cards à esquerda */
+}

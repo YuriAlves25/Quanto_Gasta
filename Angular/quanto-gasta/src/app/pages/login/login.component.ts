@@ -42,7 +42,8 @@ export class LoginComponent {
 
   submit(){
     this.loginService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe({
-      next: () => this.toastService.success("Login feito com sucesso!") && this.router.navigate(["/user"]),
+      next: () => { this.toastService.success("Login feito com sucesso!"),
+         this.router.navigate(["/expenses"]) },
     error: () => this.toastService.error("Dados incorretos!")
      })
 

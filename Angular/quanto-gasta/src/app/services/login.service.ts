@@ -18,14 +18,17 @@ apiUrl: string = "http://localhost:8080/auth"
 
   login( email: string, password: string) {
     return this.httpClient.post<LoginResponse>(this.apiUrl + "/login", { email, password}).pipe(tap((value) => {
-      localStorage.setItem("auth-token", value.token)
+      localStorage.clear();
+      console.log(localStorage.getItem)
+      localStorage.setItem("auth-token", value.token);
+      //window.location.reload()
       })
     )
   }
 
   signup( email: string, password: string, username: string) {
     return this.httpClient.post<LoginResponse>(this.apiUrl + "/register", { email, password, username}).pipe(tap((value) => {
-     // sessionStorage.setItem("auth-token", value.token)
+     //sessionStorage.setItem("auth-token", value.token)
       })
     )
   }

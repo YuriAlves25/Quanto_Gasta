@@ -20,7 +20,8 @@ interface SignupForm {
   imports: [
     LoginLayoutComponent,
     ReactiveFormsModule,
-    InputPrimaryComponent
+    InputPrimaryComponent,
+
   ],
   providers: [
     LoginService
@@ -29,6 +30,7 @@ interface SignupForm {
   styleUrl: './signup.component.scss'
 })
 export class SignupComponent {
+[x: string]: any;
   signupForm!: FormGroup<SignupForm>;
 
   constructor(
@@ -40,19 +42,20 @@ export class SignupComponent {
       username: new FormControl('', [Validators.required, Validators.minLength(3)]),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    })
+    }
+
+  )
   }
 
   submit(){
     this.loginService.signup(this.signupForm.value.email, this.signupForm.value.password, this.signupForm.value.username).subscribe({
       next: () => this.toastService.success("Conta criada com sucesso!"),
-    error: () => this.toastService.error("Dados incorretos!")
-
-    })
+    error: () => this.toastService.error("Dados incorretos!")})
   }
 
   navigate(){
     this.router.navigate(["/login"])
   }
+
 
 }
