@@ -3,6 +3,7 @@ package com.example.quantogasta.controllers;
 
 import com.example.quantogasta.domain.expense.expenseDTOs.DeleteExpenseDTO;
 import com.example.quantogasta.domain.expense.expenseDTOs.InsertExpenseDTO;
+import com.example.quantogasta.domain.expense.expenseDTOs.UpdateExpenseDTO;
 import com.example.quantogasta.services.ExpenseService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,14 @@ public class ExpenseController {
 
        expenseService.insertExpense(data, token);
 
+
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping
+    public ResponseEntity updateExpense(@RequestBody @Valid UpdateExpenseDTO data, @RequestHeader(name="Authorization") String token){
+        System.out.println("Cheguei aqui");
+        expenseService.updateExpense(data);
 
         return ResponseEntity.ok().build();
     }

@@ -32,9 +32,17 @@ export class ExpenseService {
   postSave(record: Expense) {
     const headers = this.token ? new HttpHeaders({ 'Authorization': `Bearer ${this.token}` }) : undefined;
 
-    console.log(record)
+    console.log(headers)
     return this.httpClient.post<Expense>(this.apiUrl + "expenses", record, {headers} ).pipe(first());
-    this.getList()
+
+  }
+
+  putEdit(record: Expense) {
+    const headers = this.token ? new HttpHeaders({ 'Authorization': `Bearer ${this.token}` }) : undefined;
+
+    console.log(record)
+    return this.httpClient.put<Expense>(this.apiUrl + "expenses", record, {headers} ).pipe(first());
+
   }
 
 }

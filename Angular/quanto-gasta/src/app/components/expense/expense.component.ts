@@ -1,3 +1,4 @@
+import { Expense } from './../../model/expense';
 import { MonthExpenses } from './../../model/month-expenses';
 import { Component } from '@angular/core';
 import { ExpenseService } from '../../services/expense.service';
@@ -8,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogFormComponent } from '../dialog-form/dialog-form.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import moment from 'moment';
+import { DialogEditComponent } from '../dialog-edit/dialog-edit.component';
 
 
 
@@ -39,19 +41,28 @@ export class ExpenseComponent {
 
   }
 
+  formatDate(date: string): string {
+    return moment(date).format('MM/YYYY');
+  }
+
   openDialog() {
     this.dialog.open(DialogFormComponent,{
-      
+      width: '500px',
+      height: '400px'
     })
     console.log("dialog aberto")
   }
 
-  closeDialog () {
-    this.dialog.closeAll
+  onEdit(expense: Expense) {
+    this.dialog.open(DialogEditComponent,{
+      data: expense,
+      width: '500px',
+      height: '400px'
+    })
+
+
   }
 
-  formatDate(date: string): string {
-    return moment(date).format('MM/YYYY');
-  }
+
 
 }

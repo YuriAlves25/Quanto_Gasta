@@ -79,7 +79,7 @@ export class DialogFormComponent {
     this.service.postSave(formValue)
     .subscribe( data => this.toastService.success("Gasto adicionado com sucesso"), error => this.toastService.error("Erro ao adicionar Gasto"));
 
-    
+
 
     this.onCancel();
 

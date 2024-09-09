@@ -12,17 +12,10 @@ mat-card {
   }
 }
 
-mat-toolbar{
-  color: white;
-  background-color: $primary-color;
-}
-
 span{
   margin: 5px;
 
 }
-
-
 .mat-table {
   overflow: auto;
   max-height: 600px;
@@ -30,14 +23,24 @@ span{
 
 .title {
     font-weight: bold;
-    font-size: 1.1em; 
+    font-size: 1.1em;
     background-color: #e0e0e0;
     color: #333;
 
-
   }
 
-.color {
-  color: white;
+  .mat-table {
+    overflow: auto;
+    max-height: 600px;
+    }
 
-}
+    .action-column {
+      flex: 0 0 125px;
+      padding-bottom: 8px
+    }
+
+    .action-column-header {
+      flex: 0 0 100px;
+      padding-bottom: 8px
+    }
+

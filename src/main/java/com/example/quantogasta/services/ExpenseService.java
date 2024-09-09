@@ -5,8 +5,10 @@ import com.example.quantogasta.domain.expense.Expense;
 import com.example.quantogasta.domain.expense.expenseDTOs.DeleteExpenseDTO;
 import com.example.quantogasta.domain.expense.expenseDTOs.InsertExpenseDTO;
 
+import com.example.quantogasta.domain.expense.expenseDTOs.UpdateExpenseDTO;
 import com.example.quantogasta.domain.monthExpenses.MonthExpenses;
 import com.example.quantogasta.repositories.ExpenseRepository;
+import org.hibernate.sql.Update;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
@@ -30,6 +32,17 @@ public class ExpenseService {
         MonthExpenses monthExpenses =monthExpensesService.findMonthExpenses(token,date);
 
         repository.save(new Expense(null,data.money(),data.category(),monthExpenses ));
+    }
+
+
+    public void updateExpense(UpdateExpenseDTO data){
+        Expense expense = repository.findById(data.id()).get();
+
+        expense.setCategory(data.category());
+        expense.setMoney(data.money());
+
+        repository.save(expense);
+
     }
 
     public void deleteExpense(DeleteExpenseDTO data, String token) {
