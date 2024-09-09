@@ -1,12 +1,14 @@
 import { MonthExpenses } from './../../model/month-expenses';
 import { Component } from '@angular/core';
-import {MatTableModule} from '@angular/material/table';
-import { Expense } from '../../model/expense';
-import {MatCardModule} from '@angular/material/card';
-import {MatToolbarModule} from '@angular/material/toolbar';
 import { ExpenseService } from '../../services/expense.service';
 import { Observable } from 'rxjs';
 import { AsyncPipe, JsonPipe } from '@angular/common';
+import { AppMaterialImports } from '../../shared/app-material/app-material-imports';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogFormComponent } from '../dialog-form/dialog-form.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import moment from 'moment';
+
 
 
 
@@ -14,11 +16,11 @@ import { AsyncPipe, JsonPipe } from '@angular/common';
   selector: 'app-expense',
   standalone: true,
   imports: [
-    MatTableModule,
-    MatCardModule,
-    MatToolbarModule,
     AsyncPipe,
-    JsonPipe
+    JsonPipe,
+    AppMaterialImports,
+    MatDatepickerModule
+
 
 
   ],
@@ -30,11 +32,26 @@ export class ExpenseComponent {
 
   monthExpenses$: Observable<MonthExpenses[]>;
 ;
-  displayedColumns = ["category", "money"]
+  displayedColumns = ["category", "money", "actions"]
 
-  constructor(private expenseService: ExpenseService){
-    this.monthExpenses$ = this.expenseService.list();
+  constructor(private expenseService: ExpenseService,public dialog: MatDialog){
+    this.monthExpenses$ = this.expenseService.getList();
 
+  }
+
+  openDialog() {
+    this.dialog.open(DialogFormComponent,{
+      
+    })
+    console.log("dialog aberto")
+  }
+
+  closeDialog () {
+    this.dialog.closeAll
+  }
+
+  formatDate(date: string): string {
+    return moment(date).format('MM/YYYY');
   }
 
 }

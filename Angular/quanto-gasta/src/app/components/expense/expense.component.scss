@@ -1,20 +1,43 @@
-mat-card{
-  width: 20%;
+@import "../../../styles/variables.scss";
+
+mat-card {
+  max-width: 60%;
+  margin: 2em auto;
+}
+
+@media (max-width: 600px) {
+  mat-card {
+    max-width: 100%;
+    margin: 1em;
+  }
+}
+
+mat-toolbar{
+  color: white;
+  background-color: $primary-color;
+}
+
+span{
+  margin: 5px;
 
 }
 
-.toolbar {
-  display: flex;
-  justify-content: center;
-}
 
-.toolbar-title {
-  text-align: center;
-}
+.mat-table {
+  overflow: auto;
+  max-height: 600px;
+  }
 
-.card-container {
-  display: flex;
-  flex-wrap: wrap; /* Permite que os cards quebrem para a linha seguinte, se necessário */
-  gap: 16px; /* Espaçamento entre os cards */
-  justify-content: flex-start; /* Alinha os cards à esquerda */
+.title {
+    font-weight: bold;
+    font-size: 1.1em; 
+    background-color: #e0e0e0;
+    color: #333;
+
+
+  }
+
+.color {
+  color: white;
+
 }

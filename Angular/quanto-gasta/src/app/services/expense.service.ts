@@ -22,10 +22,19 @@ export class ExpenseService {
 
 
 
-   list(){
+   getList() {
     const headers = this.token ? new HttpHeaders({ 'Authorization': `Bearer ${this.token}` }) : undefined;
-    
+
     return this.httpClient.get<MonthExpenses[]>(this.apiUrl + "month_expenses", {headers} ).pipe(first());
 
   }
+
+  postSave(record: Expense) {
+    const headers = this.token ? new HttpHeaders({ 'Authorization': `Bearer ${this.token}` }) : undefined;
+
+    console.log(record)
+    return this.httpClient.post<Expense>(this.apiUrl + "expenses", record, {headers} ).pipe(first());
+    this.getList()
+  }
+
 }

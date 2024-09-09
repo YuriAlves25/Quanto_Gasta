@@ -3,17 +3,28 @@
 mat-toolbar{
   display: flex;
   justify-content: space-between;
+
+  color: white;
+  background-color: $primary-color;
 }
 .example-spacer {
   flex: 1 1 auto;
 }
 
 button{
-
-  margin-left: 20px;
-}
-
-mat-flat-button{
+  color:  $secondary-color;
   background-color: $secondary-color;
+  margin-left: 20px;
+
+
 }
 
+
+
+
+@media (max-width: 600px) {
+  mat-toolbar {
+    max-width: 100%;
+    padding:  0 1em;
+  }
+}
