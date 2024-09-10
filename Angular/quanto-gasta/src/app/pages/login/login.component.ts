@@ -1,4 +1,4 @@
-import { routes } from './../../app.routes';
+
 import { LoginService } from './../../services/login.service';
 import { Component } from '@angular/core';
 import { LoginLayoutComponent } from '../../components/login-layout/login-layout.component';

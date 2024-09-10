@@ -1,10 +1,11 @@
+import { Expense } from './../../model/expense';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ExpenseService } from '../../services/expense.service';
 import { ToastrService } from 'ngx-toastr';
 import { AppMaterialImports } from '../../shared/app-material/app-material-imports';
-import { Expense } from '../../model/expense';
+
 
 @Component({
   selector: 'app-dialog-edit',
@@ -24,7 +25,7 @@ export class DialogEditComponent {
 
   constructor(private formBuilder: FormBuilder,
     private service: ExpenseService,
-    private toastService: ToastrService
+    private toastService: ToastrService,
     ) {
     this.form = this.formBuilder.group({
       id:[this.data.id],
@@ -38,8 +39,7 @@ export class DialogEditComponent {
 
   onSubmit() {
     this.service.putEdit(this.form.value)
-    .subscribe( data => this.toastService.success("Gasto editado com sucesso"), error => this.toastService.error("Erro ao editar Gasto"));
-    console.log(this.form.value)
+    .subscribe( () => this.toastService.success("Gasto editado com sucesso"), error => this.toastService.error("Erro ao editar Gasto"));
     this.dialogRef.close()
   }
 

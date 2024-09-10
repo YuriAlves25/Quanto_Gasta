@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ToolbarComponent } from '../../components/toolbar/toolbar.component';
 import { ExpenseComponent } from '../../components/expense/expense.component';
 
 
@@ -7,7 +6,7 @@ import { ExpenseComponent } from '../../components/expense/expense.component';
   selector: 'app-expenses',
   standalone: true,
   imports: [
-    ToolbarComponent,
+
     ExpenseComponent
   ],
   templateUrl: './expenses.component.html',

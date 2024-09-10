@@ -31,7 +31,11 @@ public class AuthenticationController {
     public ResponseEntity register(@RequestBody @Valid RegisterDTO data){
 
         userService.register(data);
-        return ResponseEntity.ok().build();
+
+        var token = userService.login(new AuthenticationDTO(data.email(), data.password()));
+        return ResponseEntity.ok(new LoginResponseDTO(token));
     }
+
+
 
 }

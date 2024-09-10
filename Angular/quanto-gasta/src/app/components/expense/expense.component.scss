@@ -1,5 +1,19 @@
 @import "../../../styles/variables.scss";
 
+mat-toolbar{
+  color: white;
+  background-color: $primary-color;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.button_margin{
+ margin-left: 20px;
+}
+
+
 mat-card {
   max-width: 60%;
   margin: 2em auto;

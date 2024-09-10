@@ -28,7 +28,7 @@ apiUrl: string = "http://localhost:8080/auth"
 
   signup( email: string, password: string, username: string) {
     return this.httpClient.post<LoginResponse>(this.apiUrl + "/register", { email, password, username}).pipe(tap((value) => {
-     //sessionStorage.setItem("auth-token", value.token)
+      localStorage.setItem("auth-token", value.token)
       })
     )
   }
