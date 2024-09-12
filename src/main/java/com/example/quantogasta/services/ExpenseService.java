@@ -35,14 +35,16 @@ public class ExpenseService {
     }
 
 
-    public void updateExpense(UpdateExpenseDTO data){
+    public void updateExpense(UpdateExpenseDTO data, String token){
         Expense expense = repository.findById(data.id()).get();
 
         expense.setCategory(data.category());
         expense.setMoney(data.money());
+        MonthExpenses monthExpenses = expense.getMonthExpenses();
+        if (monthExpensesService.expenseBelongsToUser(monthExpenses,token)){
+            repository.save(expense);
 
-        repository.save(expense);
-
+        }
     }
 
     public void deleteExpense(DeleteExpenseDTO data, String token) {

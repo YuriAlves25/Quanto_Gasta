@@ -31,8 +31,8 @@ public class ExpenseController {
 
     @PutMapping
     public ResponseEntity updateExpense(@RequestBody @Valid UpdateExpenseDTO data, @RequestHeader(name="Authorization") String token){
-        System.out.println("Cheguei aqui");
-        expenseService.updateExpense(data);
+
+        expenseService.updateExpense(data, token);
 
         return ResponseEntity.ok().build();
     }

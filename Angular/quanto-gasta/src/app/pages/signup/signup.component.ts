@@ -49,8 +49,8 @@ export class SignupComponent {
 
   submit(){
     this.loginService.signup(this.signupForm.value.email, this.signupForm.value.password, this.signupForm.value.username).subscribe({
-      next: () => { this.toastService.success("Login feito com sucesso!"),
-         this.router.navigate(["/expenses"]) },
+      next: () => { this.toastService.success("Conta criada com sucesso!"),
+        this.router.navigate(["/expenses"]); },
     error: () => this.toastService.error("Dados incorretos!")
      })
   }

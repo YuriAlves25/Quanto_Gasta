@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+
 import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
-import { UserComponent } from './pages/user/user.component';
 import { AuthGuard } from './services/auth-guard.service';
 import { ExpensesComponent } from './pages/expenses/expenses.component';
+import { AuthGuard2 } from './services/authguard2.service';
 
 export const routes: Routes = [
   {
@@ -14,22 +14,23 @@ export const routes: Routes = [
   },
   {
     path: "login",
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate: [AuthGuard2]
   },
   {
     path: "signup",
-    component: SignupComponent
-  },
-  {
-    path: "user",
-    component: UserComponent,
-    canActivate: [AuthGuard]
+    component: SignupComponent,
+    canActivate: [AuthGuard2]
   },
   {
     path: "expenses",
     component: ExpensesComponent,
     canActivate: [AuthGuard]
 
+  },
+  {
+    path: '**',
+    redirectTo: 'login'
   }
 
 

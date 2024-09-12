@@ -7,10 +7,7 @@ import com.example.quantogasta.services.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("auth")
@@ -18,6 +15,15 @@ public class AuthenticationController {
 
     @Autowired
     private UserService userService;
+
+    @GetMapping()
+    public ResponseEntity validateToken(@RequestHeader(name="Authorization") String token) {
+
+       boolean isValid = userService.validateToken(token);
+
+    return ResponseEntity.ok(isValid);
+    }
+
 
     @PostMapping("/login")
     public ResponseEntity login (@RequestBody @Valid AuthenticationDTO data){
@@ -35,6 +41,7 @@ public class AuthenticationController {
         var token = userService.login(new AuthenticationDTO(data.email(), data.password()));
         return ResponseEntity.ok(new LoginResponseDTO(token));
     }
+
 
 
 

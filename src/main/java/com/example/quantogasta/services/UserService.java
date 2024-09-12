@@ -104,4 +104,18 @@ public class UserService {
         return repository.existsByEmailIgnoreCase(email);
     }
 
+    public boolean validateToken(String token){
+        String tokenWithoutBearer = token.replace("Bearer ", "");
+        try {
+            var subject = tokenService.validateToken(tokenWithoutBearer);
+
+            if (subject == "") {
+                return false;
+            }
+            return true ;
+        } catch (NullPointerException e) {
+            return false;
+        }
+
+    }
 }

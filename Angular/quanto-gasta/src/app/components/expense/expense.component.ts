@@ -11,7 +11,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import moment from 'moment';
 import { DialogEditComponent } from '../dialog-edit/dialog-edit.component';
 import { ToastrService } from 'ngx-toastr';
-import { ExpenseUpdateService } from '../../services/expense-update.service';
+
 
 
 
@@ -42,7 +42,6 @@ export class ExpenseComponent {
   constructor(private expenseService: ExpenseService,
               public dialog: MatDialog,
               private toastService: ToastrService,
-              private expenseUpdateService: ExpenseUpdateService
             ){
     this.monthExpenses$ = this.expenseService.getList();
 

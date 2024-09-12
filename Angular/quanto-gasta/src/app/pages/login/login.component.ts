@@ -6,6 +6,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { InputPrimaryComponent } from '../../components/input-primary/input-primary.component';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { delay } from 'rxjs';
 
 interface LoginForm {
   email: FormControl,
@@ -40,13 +41,15 @@ export class LoginComponent {
     })
   }
 
-  submit(){
-    this.loginService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe({
-      next: () => { this.toastService.success("Login feito com sucesso!"),
-         this.router.navigate(["/expenses"]) },
-    error: () => this.toastService.error("Dados incorretos!")
-     })
-
+  submit() {
+    this.loginService.login(this.loginForm.value.email, this.loginForm.value.password).pipe()
+    .subscribe({
+      next: () => {
+        this.toastService.success("Login feito com sucesso!");
+        this.router.navigate(["/expenses"]);
+      },
+      error: () => this.toastService.error("Dados incorretos!")
+    });
   }
 
   navigate(){
