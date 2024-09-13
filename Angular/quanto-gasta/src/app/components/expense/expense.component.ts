@@ -11,6 +11,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import moment from 'moment';
 import { DialogEditComponent } from '../dialog-edit/dialog-edit.component';
 import { ToastrService } from 'ngx-toastr';
+import { DialogAddComponent } from '../dialog-add/dialog-add.component';
 
 
 
@@ -55,8 +56,18 @@ export class ExpenseComponent {
     return moment(date).format('MM/YYYY');
   }
 
-  openDialog() {
+  onForm() {
     const dialogRef = this.dialog.open(DialogFormComponent,{
+
+      width: '500px',
+      height: '400px'
+    })
+    dialogRef.afterClosed().subscribe(() => this.refresh());
+  }
+
+  onAdd(date: any) {
+    const dialogRef = this.dialog.open(DialogAddComponent,{
+      data: date,
       width: '500px',
       height: '400px'
     })
@@ -79,6 +90,11 @@ export class ExpenseComponent {
   onRemove(expense: Expense) {
       this.expenseService.removeDelete(expense.id)
       .subscribe( () => { this.refresh(); this.toastService.success("Gasto excluido com sucesso") })  ;
+  }
+
+  onLogOut(){
+    localStorage.clear();
+    window.location.reload()
   }
 
 

@@ -16,7 +16,7 @@ export class AuthGuard implements CanActivate {
     const authToken = localStorage.getItem('auth-token');
 
       if(authToken == null){
-        console.log("esse é o token: " + authToken)
+        
         this.router.navigate(['/login']);
 
       }
