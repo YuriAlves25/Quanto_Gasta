@@ -1,23 +1,18 @@
-# QuantoGasta 🚀🚀
+---
+title: "Quanto Gasta" 
+draft: false 
+language: pt-br 
+featured\_image: images/featured/featured-img-placeholder.png 
+summary: Aplicação Web | Gestão de gastos 
+author: "Yuri Alves de Araujo"
+Unifil categories: 
+Blog tags: \["CC", "ES", "ADS", "Tecnologia", "Finanças"\] 
+linkweb: 
 
-## Descrição / Description
-**[Português]**
-QuantoGasta é uma aplicação web desenvolvida para ajudar pessoas a gerenciar seus gastos financeiros. Foi desenvolvida usando Java SpringBoot, MySQL e Angular. A parte front-end em Angular ainda está em desenvolvimento.
+Link do blog linkvideo: Link do video
 
-**[English]**
-QuantoGasta is a web application developed to help people manage their financial expenses. It was developed using Java SpringBoot, MySQL, and Angular. The front-end part in Angular is still under development.
+---
 
+# Quanto Gasta
 
-## Conhecimentos adquiridos / Skills Acquired
-
-**[Português]**
-* Pude fixar conhecimentos de Programação Orientada a Objetos, API RESTful, Spring Security, Token JWT.
-* Aprendi e apliquei conceitos de arquitetura de 3 camadas.
-
-**[English]**
-* I was able to solidify knowledge in Object-Oriented Programming, RESTful API, Spring Security, JWT Token.
-* I learned and applied concepts of 3-tier architecture.
-
-## Autor / Author
-* Yuri Alves de Araujo
-* [LinkedIn](https://www.linkedin.com/in/yuri-alves-de-araujo)
+A aplicação "Quanto Gasta" é uma ferramenta web desenvolvida para ajudar as pessoas a monitorarem e analisarem seus gastos mensais. Com uma interface intuitiva, ela permite que os usuários registrem suas despesas e identifiquem onde estão seus maiores gastos, proporcionando maior controle financeiro. O projeto foi desenvolvido utilizando tecnologias modernas como Angular 17 no front-end, Spring Boot 3 no back-end, Java 17 e MySQL para gerenciamento de dados. Criada com o objetivo de facilitar a gestão financeira pessoal, "Quanto Gasta" é uma solução prática e acessível, ideal para quem deseja aprimorar seu planejamento financeiro.
