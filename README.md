@@ -8,7 +8,6 @@ author: "Yuri Alves de Araujo"
 Unifil categories: 
 Blog tags: \["CC", "ES", "ADS", "Tecnologia", "Finanças"\] 
 linkweb: 
-
 Link do blog linkvideo: Link do video
 
 ---
