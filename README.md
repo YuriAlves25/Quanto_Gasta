@@ -2,7 +2,7 @@
 title: "Quanto Gasta" 
 draft: false 
 language: pt-br 
-featured\_image: Quanto_gasta.png
+featured\_image: images/Quanto_gasta.png
 summary: Aplicação Web | Gestão de gastos 
 author: "Yuri Alves de Araujo"
 Unifil categories: 
