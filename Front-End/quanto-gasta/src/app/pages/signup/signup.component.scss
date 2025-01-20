@@ -3,11 +3,17 @@ form {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  margin-bottom: 34px;
+  margin-bottom: 3px;
 
 }
 
-img{
-  width: 20%;
+.confirmError{
+  color: red;
+  text-align: center;
 }
 
+@media (min-resolution: 120dpi) and (max-resolution: 199dpi) {
+  form {
+    gap: 0; /* Remova o gap para escalas de 125% a 150% */
+  }
+}

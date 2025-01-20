@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "users")
@@ -73,7 +74,9 @@ public class User implements UserDetails {
     }
 
     public Set<MonthExpenses> getMonthExpensesSet() {
-        return monthExpenses;
+        return monthExpenses.stream()
+                .sorted(Comparator.comparing(MonthExpenses::getdate).reversed())
+                .collect(Collectors.toCollection(LinkedHashSet::new));
     }
 
     @Override

@@ -11,15 +11,13 @@ export class ExpenseService {
 
 
 
-  apiUrl: string = "http://localhost:8080/"
+  apiUrl: string = "http://140.238.182.247:8080/"
   token = localStorage.getItem('auth-token')
 
 
   constructor(private httpClient: HttpClient) {
 
    }
-
-
 
 
    getList() {

@@ -12,10 +12,7 @@ import moment from 'moment';
 import { DialogEditComponent } from '../dialog-edit/dialog-edit.component';
 import { ToastrService } from 'ngx-toastr';
 import { DialogAddComponent } from '../dialog-add/dialog-add.component';
-
-
-
-
+import { ChartComponent } from "../chart/chart.component";
 
 @Component({
   selector: 'app-expense',
@@ -24,11 +21,9 @@ import { DialogAddComponent } from '../dialog-add/dialog-add.component';
     AsyncPipe,
     JsonPipe,
     AppMaterialImports,
-    MatDatepickerModule
-
-
-
-  ],
+    MatDatepickerModule,
+    ChartComponent
+],
   templateUrl: './expense.component.html',
   styleUrl: './expense.component.scss'
 })

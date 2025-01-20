@@ -6,6 +6,7 @@
   <button mat-flat-button  color= accent (click)="onLogOut() "> Sair </button>
 </mat-toolbar>
 
+<app-chart [expenseData]="monthExpenses$"></app-chart>
 
 
 @for (month of monthExpenses$ | async; track month.id) {

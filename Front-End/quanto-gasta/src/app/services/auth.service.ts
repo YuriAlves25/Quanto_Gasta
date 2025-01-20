@@ -10,7 +10,7 @@ export class AuthService {
 
   constructor(private httpClient: HttpClient) { }
 
-  apiUrl: string = "http://localhost:8080/auth";
+  apiUrl: string = "http://140.238.182.247:8080/auth";
 
 
 
@@ -20,7 +20,7 @@ export class AuthService {
     const token = localStorage.getItem('auth-token');
      const headers = token ? new HttpHeaders({ 'Authorization': `Bearer ${token}` }) : undefined;
 
-    
+
     return this.httpClient.get<boolean>(this.apiUrl, { headers, observe: 'response' }).pipe(
       map(response => response.status === 200),
       catchError(() => of(false))

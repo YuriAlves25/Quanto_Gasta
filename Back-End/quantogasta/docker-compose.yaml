@@ -1,0 +1,26 @@
+
+services:
+  api:
+    image: yurialves25/quantogastaspring
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+
+  db:
+    image: yurialves25/quantogastadb
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  front:
+    image: yurialves25/quantogastaangular
+    ports:
+      - "4200:4200"
+
+volumes:
+  db_data:

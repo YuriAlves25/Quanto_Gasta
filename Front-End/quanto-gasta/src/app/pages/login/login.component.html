@@ -1,16 +1,16 @@
 
 <app-login-layout
-  title="Login"
+  title="Quanto Gasta"
   primaryBtnText="Login"
   secondaryBtnText="Crie uma conta"
-  image="/assets/login.svg"
+  image="/assets/quantogastaLogo.png"
   (submit)="submit()"
   (navigate)="navigate()"
   [disablePrimaryBtn]="!loginForm.valid"
   >
 
 
-  <form [formGroup]="loginForm">
+  <form [formGroup]="loginForm" (keydown.enter)="submit()">
     <app-input-primary
         formControlName="email"
         inputName="email"
@@ -30,3 +30,4 @@
 
   </form>
 </app-login-layout>
+<app-socials></app-socials>

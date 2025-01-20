@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
 import { ExpenseComponent } from '../../components/expense/expense.component';
+import { SocialsComponent } from "../../components/socials/socials.component";
 
 
 @Component({
   selector: 'app-expenses',
   standalone: true,
   imports: [
-
-    ExpenseComponent
-  ],
+    ExpenseComponent,
+    SocialsComponent
+],
   templateUrl: './expenses.component.html',
   styleUrl: './expenses.component.scss'
 })

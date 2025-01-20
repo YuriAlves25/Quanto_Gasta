@@ -7,6 +7,8 @@ import { InputPrimaryComponent } from '../../components/input-primary/input-prim
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { delay } from 'rxjs';
+import { SocialsComponent } from '../../components/socials/socials.component';
+
 
 interface LoginForm {
   email: FormControl,
@@ -17,9 +19,11 @@ interface LoginForm {
   selector: 'app-login',
   standalone: true,
   imports: [
+    SocialsComponent,
     LoginLayoutComponent,
     ReactiveFormsModule,
-    InputPrimaryComponent
+    InputPrimaryComponent,
+
   ],
   providers: [
     LoginService

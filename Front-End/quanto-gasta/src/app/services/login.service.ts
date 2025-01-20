@@ -11,7 +11,7 @@ import { AuthService } from './auth.service';
 
 export class LoginService {
 
-apiUrl: string = "http://localhost:8080/auth"
+apiUrl: string = "http://140.238.182.247:8080/auth"
 
 
 
@@ -19,7 +19,7 @@ apiUrl: string = "http://localhost:8080/auth"
 
   login( email: string, password: string) {
     return this.httpClient.post<LoginResponse>(this.apiUrl + "/login", { email, password}).pipe(tap((value) => {
-      
+
       localStorage.setItem("auth-token", value.token);
 
       })
